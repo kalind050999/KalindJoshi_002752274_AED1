@@ -50,6 +50,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         reademp.setText("View Employee");
+        reademp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                readempActionPerformed(evt);
+            }
+        });
 
         updateemp.setText("Update Details");
 
@@ -121,6 +126,12 @@ public class MainJFrame extends javax.swing.JFrame {
         SplitPane.setRightComponent(empcPanel);
         
     }//GEN-LAST:event_addempActionPerformed
+
+    private void readempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readempActionPerformed
+        // TODO add your handling code here:
+        emprJPanel emprPanel = new emprJPanel(his);
+        SplitPane.setRightComponent(emprPanel);
+    }//GEN-LAST:event_readempActionPerformed
 
     /**
      * @param args the command line arguments

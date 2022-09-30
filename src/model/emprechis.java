@@ -32,6 +32,10 @@ public class emprechis {
     emprec newrec = new emprec();
     his.add(newrec);
     return newrec;
-    } 
+    }
+    
+    public void deleteEmp(emprec emp){
+        his.remove(emp);
+    }
     
 }

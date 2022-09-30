@@ -24,7 +24,8 @@ public class emprec {
 
     @Override
     public String toString() {
-        return "emprec{" + "name=" + name + ", ID=" + ID + ", age=" + age + ", gender=" + gender + ", date=" + date + ", level=" + level + ", info=" + info + ", pos=" + pos + ", mobile=" + mobile + ", email=" + email + ", photo=" + photo + '}';
+        //return "emprec{" + "name=" + name + ", ID=" + ID + ", age=" + age + ", gender=" + gender + ", date=" + date + ", level=" + level + ", info=" + info + ", pos=" + pos + ", mobile=" + mobile + ", email=" + email + ", photo=" + photo + '}';
+    return level;
     }
     
 
@@ -116,6 +117,7 @@ public class emprec {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
     
     
 }

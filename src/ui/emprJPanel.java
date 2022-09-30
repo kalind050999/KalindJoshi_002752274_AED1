@@ -93,17 +93,17 @@ public class emprJPanel extends javax.swing.JPanel {
 
         viewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Object", "Name", "ID", "Gender"
+                "Name", "ID", "Gender"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -387,11 +387,11 @@ public class emprJPanel extends javax.swing.JPanel {
         mdl.setRowCount(0);
         
         for(emprec emp :his.getHis()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[3];
+            //row[0] = emp;
             row[0] = emp;
-            row[1] = emp.getName();
-            row[2] = emp.getID();
-            row[3] = emp.getGender();
+            row[1] = emp.getID();
+            row[2] = emp.getGender();
             
             mdl.addRow(row);
         }

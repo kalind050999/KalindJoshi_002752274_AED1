@@ -57,6 +57,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         updateemp.setText("Update Details");
+        updateemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateempActionPerformed(evt);
+            }
+        });
 
         delemp.setText("Delete Record");
 
@@ -132,6 +137,13 @@ public class MainJFrame extends javax.swing.JFrame {
         emprJPanel emprPanel = new emprJPanel(his);
         SplitPane.setRightComponent(emprPanel);
     }//GEN-LAST:event_readempActionPerformed
+
+    private void updateempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateempActionPerformed
+        // TODO add your handling code here:
+        empuJPanel empuPanel = new empuJPanel(his);
+        SplitPane.setRightComponent(empuPanel);  
+        
+    }//GEN-LAST:event_updateempActionPerformed
 
     /**
      * @param args the command line arguments

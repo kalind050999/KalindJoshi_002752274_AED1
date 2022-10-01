@@ -206,7 +206,7 @@ public class emprJPanel extends javax.swing.JPanel {
                                             .addComponent(cellTxt)
                                             .addComponent(lvlTxt)
                                             .addComponent(emailTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(43, 43, 43)
                                         .addComponent(picLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)

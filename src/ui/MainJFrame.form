@@ -50,7 +50,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="delemp" max="32767" attributes="0"/>
+                          <Component id="searchemp" max="32767" attributes="0"/>
                           <Component id="addemp" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -74,7 +74,7 @@
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                       <Component id="updateemp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="delemp" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchemp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="209" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -105,10 +105,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateempActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="delemp">
+            <Component class="javax.swing.JButton" name="searchemp">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Delete Record"/>
+                <Property name="text" type="java.lang.String" value="Search a Record"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchempActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

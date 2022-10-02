@@ -37,7 +37,7 @@ public class MainJFrame extends javax.swing.JFrame {
         addemp = new javax.swing.JButton();
         reademp = new javax.swing.JButton();
         updateemp = new javax.swing.JButton();
-        delemp = new javax.swing.JButton();
+        searchemp = new javax.swing.JButton();
         viewPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +63,12 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        delemp.setText("Delete Record");
+        searchemp.setText("Search a Record");
+        searchemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchempActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
@@ -72,7 +77,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(delemp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchemp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addemp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -91,7 +96,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(104, 104, 104)
                 .addComponent(updateemp)
                 .addGap(18, 18, 18)
-                .addComponent(delemp)
+                .addComponent(searchemp)
                 .addContainerGap(209, Short.MAX_VALUE))
         );
 
@@ -145,6 +150,13 @@ public class MainJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_updateempActionPerformed
 
+    private void searchempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchempActionPerformed
+        // TODO add your handling code here:
+        empdJPanel empdPanel = new empdJPanel(his);
+        SplitPane.setRightComponent(empdPanel);
+        
+    }//GEN-LAST:event_searchempActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,8 +196,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane SplitPane;
     private javax.swing.JButton addemp;
     private javax.swing.JPanel buttonsPanel;
-    private javax.swing.JButton delemp;
     private javax.swing.JButton reademp;
+    private javax.swing.JButton searchemp;
     private javax.swing.JButton updateemp;
     private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables

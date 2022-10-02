@@ -5,7 +5,10 @@
 package ui;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.emprec;
@@ -21,6 +24,10 @@ public class empcJPanel extends javax.swing.JPanel {
     
     ArrayList<emprec> empl = new ArrayList<emprec>();
     emprec emp = new emprec();
+    static final String email_valid = "^(?=.{1,64}@)[\\p{L}0-9_-]+(\\.[\\p{L}0-9_-]+)*@" + "[^-][\\p{L}0-9-]+(\\.[\\p{L}0-9-]+)*(\\.[\\p{L}]{2,})$";
+    static final String mobile_valid ="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+    static final Pattern pattern = Pattern.compile(email_valid);
+    static final Pattern pattern_mobile = Pattern.compile(mobile_valid);
     
 
     /**
@@ -36,6 +43,23 @@ public class empcJPanel extends javax.swing.JPanel {
         initComponents();
         this.his = his;
     }
+    public static boolean isEmailValid(final String email) {
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    
+    public static boolean isMobileValid(final String mobile) {
+        Matcher matcher = Pattern.compile(mobile_valid).matcher(mobile);
+        return matcher.matches();
+    }
+    
+    public boolean isInteger(String a){
+        try{
+            Integer.parseInt(a);
+            return true;
+        }catch(Exception e){return false;}
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,17 +87,18 @@ public class empcJPanel extends javax.swing.JPanel {
         idTxt = new javax.swing.JTextField();
         ageTxt = new javax.swing.JTextField();
         cellTxt = new javax.swing.JTextField();
-        joinTxt = new javax.swing.JTextField();
-        genderTxt = new javax.swing.JTextField();
         levelTxt = new javax.swing.JTextField();
         posTxt = new javax.swing.JTextField();
         emailTxt = new javax.swing.JTextField();
         imageTxt = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         infoTxt = new javax.swing.JTextField();
+        genderCombo = new javax.swing.JComboBox<>();
+        dateCal = new com.toedter.calendar.JDateChooser();
 
         jLabel12.setText("jLabel12");
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(600, 600));
 
         addemptitle.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 18)); // NOI18N
@@ -124,6 +149,12 @@ public class empcJPanel extends javax.swing.JPanel {
             }
         });
 
+        levelTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                levelTxtActionPerformed(evt);
+            }
+        });
+
         imageTxt.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 13)); // NOI18N
         imageTxt.setText("UPLOAD");
         imageTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +166,19 @@ public class empcJPanel extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         jLabel11.setText("Information");
 
+        infoTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoTxtActionPerformed(evt);
+            }
+        });
+
+        genderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other", " " }));
+        genderCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,65 +189,62 @@ public class empcJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cellTxt))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                        .addGap(44, 44, 44)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(joinTxt)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(idTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                            .addComponent(genderTxt))))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(19, 19, 19)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emailTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(infoTxt))
-                                .addGap(154, 154, 154))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(levelTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                                .addComponent(dateCal, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(imageTxt)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(cellTxt))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel1)
+                                                    .addComponent(jLabel2))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(26, 26, 26)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(95, 95, 95)
+                                                .addComponent(jLabel4))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(idTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(genderCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 107, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(emailTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(levelTxt, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(71, 71, 71)
                                 .addComponent(jLabel9)
-                                .addGap(38, 38, 38)
-                                .addComponent(posTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(posTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(infoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imageTxt)
+                .addGap(236, 236, 236)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -212,13 +253,11 @@ public class empcJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(addemptitle)
                 .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
@@ -233,77 +272,95 @@ public class empcJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genderTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
-                            .addComponent(joinTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(55, 55, 55)
+                            .addComponent(dateCal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel8)
                     .addComponent(cellTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(imageTxt)
-                            .addComponent(jLabel11)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(infoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(63, 63, 63)
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(imageTxt)
+                    .addComponent(jLabel11)
+                    .addComponent(infoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
                 .addComponent(jButton1)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        boolean validate_email = isEmailValid(emailTxt.getText().toString());
+        System.out.println("Email pattern: "+validate_email);
         
-        String name = nameTxt.getText();
-        int ID = Integer.parseInt(idTxt.getText());
-        int age = Integer.parseInt(ageTxt.getText());
-        String gender = genderTxt.getText();
-        String date = joinTxt.getText();
-        String level = levelTxt.getText();
-        String info = infoTxt.getText();
-        String pos = posTxt.getText();
-        long mobile = Long.parseLong(cellTxt.getText());
-        String email = emailTxt.getText();
-        String photo = pic;
+        boolean validate_mobile = isMobileValid(cellTxt.getText().toString());
+        System.out.println("MobilePattern pattern: "+validate_mobile);
         
-        emprec emp = his.addNew();
-        
-        emp.setAge(age);
-        emp.setName(name);
-        emp.setEmail(email);
-        emp.setGender(gender);
-        emp.setInfo(info);
-        emp.setID(ID);
-        emp.setMobile(mobile);
-        emp.setPhoto(photo);
-        emp.setPos(pos);
-        emp.setDate(date);
-        emp.setLevel(level);
-        
-        empl.add(emp);
-        
-        JOptionPane.showMessageDialog(this, "Employee Added !");
-        
-        ageTxt.setText("");
-        cellTxt.setText("");
-        emailTxt.setText("");
-        genderTxt.setText("");
-        idTxt.setText("");
-        imageTxt.setText("");
-        infoTxt.setText("");
-        joinTxt.setText("");
-        levelTxt.setText("");
-        nameTxt.setText("");
-        posTxt.setText("");
+        boolean validate_eid = isInteger(idTxt.getText().toString());
+        boolean validate_age = isInteger(ageTxt.getText().toString());
+        if(validate_email && validate_mobile && validate_eid && validate_age){
+            String name = nameTxt.getText();
+            int ID = Integer.parseInt(idTxt.getText());
+            int age = Integer.parseInt(ageTxt.getText());
+            String gender = genderCombo.getSelectedItem().toString();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String startdate = dateFormat.format(dateCal.getDate());
+            String level = levelTxt.getText();
+            String info = infoTxt.getText();
+            String pos = posTxt.getText();
+            long mobile = Long.parseLong(cellTxt.getText());
+            String email = emailTxt.getText();
+            String photo = pic;
+
+            emprec emp = his.addNew();
+
+            emp.setAge(age);
+            emp.setName(name);
+            emp.setEmail(email);
+            emp.setGender(gender);
+            emp.setInfo(info);
+            emp.setID(ID);
+            emp.setMobile(mobile);
+            emp.setPhoto(photo);
+            emp.setPos(pos);
+            emp.setDate(startdate);
+            emp.setLevel(level);
+
+            empl.add(emp);
+
+            JOptionPane.showMessageDialog(this, "Employee Added !");
+
+            ageTxt.setText("");
+            cellTxt.setText("");
+            emailTxt.setText("");
+            genderCombo.setSelectedItem("");
+            idTxt.setText("");
+            imageTxt.setText("");
+            infoTxt.setText("");
+            dateCal.setCalendar(null);
+            levelTxt.setText("");
+            nameTxt.setText("");
+            posTxt.setText("");
+        }
+        else if(!validate_email){
+            JOptionPane.showMessageDialog(this,"Email format not correct");
+        }
+        else if(!validate_eid){
+            JOptionPane.showMessageDialog(this,"EID should be int");
+        }
+        else if(!validate_age){
+            JOptionPane.showMessageDialog(this,"Age should be int");
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Mobile format not correct");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -323,13 +380,26 @@ public class empcJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ageTxtActionPerformed
 
+    private void genderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderComboActionPerformed
+
+    private void infoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_infoTxtActionPerformed
+
+    private void levelTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_levelTxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addemptitle;
     private javax.swing.JTextField ageTxt;
     private javax.swing.JTextField cellTxt;
+    private com.toedter.calendar.JDateChooser dateCal;
     private javax.swing.JTextField emailTxt;
-    private javax.swing.JTextField genderTxt;
+    private javax.swing.JComboBox<String> genderCombo;
     private javax.swing.JTextField idTxt;
     private javax.swing.JButton imageTxt;
     private javax.swing.JTextField infoTxt;
@@ -346,7 +416,6 @@ public class empcJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField joinTxt;
     private javax.swing.JTextField levelTxt;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JTextField posTxt;

@@ -234,7 +234,7 @@ public class empuJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(upidTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Age)
                     .addComponent(upageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,7 +270,7 @@ public class empuJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addGap(0, 51, Short.MAX_VALUE))
+                        .addGap(0, 32, Short.MAX_VALUE))
                     .addComponent(photolabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -286,6 +286,7 @@ public class empuJPanel extends javax.swing.JPanel {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        
         HashMap<String,Integer> IndexKey = new HashMap<String,Integer>();
         IndexKey.put("Name", 0);
         IndexKey.put("ID", 1);
@@ -313,108 +314,392 @@ public class empuJPanel extends javax.swing.JPanel {
         
         for (int i=0; i<emlist.size(); i++)
         {
-            if(fetch == "Name"){
+            if( (fetch == "Name")  && (fetchTxt.equals(emlist.get(i).getName())) ){
                 fetchChk = String.valueOf(emlist.get(i).getName());
-                
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
             }
-            if(fetch == "ID"){
+            if( (fetch == "ID")  && (fetchTxt.equals(String.valueOf(emlist.get(i).getID())) )){
                 fetchChk = String.valueOf(emlist.get(i).getID());
-                
-            } 
-            if(fetch == "Age"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Age")  && (fetchTxt.equals(String.valueOf(emlist.get(i).getAge())) )){
                 fetchChk = String.valueOf(emlist.get(i).getAge());
-                
-            } 
-            if(fetch == "Gender"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Gender")  && (fetchTxt.equals(emlist.get(i).getGender())) ){
                 fetchChk = String.valueOf(emlist.get(i).getGender());
-                
-            } 
-            if(fetch == "Date"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Date")  && (fetchTxt.equals(emlist.get(i).getDate())) ){
                 fetchChk = String.valueOf(emlist.get(i).getDate());
-                
-            } 
-            if(fetch == "Level"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Level")  && (fetchTxt.equals(emlist.get(i).getLevel())) ){
                 fetchChk = String.valueOf(emlist.get(i).getLevel());
-                
-            } 
-            if(fetch == "Info"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Info")  && (fetchTxt.equals(emlist.get(i).getInfo())) ){
                 fetchChk = String.valueOf(emlist.get(i).getInfo());
-                
-            } 
-            if(fetch == "Pos"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Pos")  && (fetchTxt.equals(emlist.get(i).getPos())) ){
                 fetchChk = String.valueOf(emlist.get(i).getPos());
-                
-            } 
-            if(fetch == "Mobile"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Mobile")  && (fetchTxt.equals(String.valueOf(emlist.get(i).getMobile()))) ){
                 fetchChk = String.valueOf(emlist.get(i).getMobile());
-                
-            } 
-            if(fetch == "Email"){
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
+            }
+            if( (fetch == "Email")  && (fetchTxt.equals(emlist.get(i).getEmail())) ){
                 fetchChk = String.valueOf(emlist.get(i).getEmail());
-               
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                }
             }
-            if (fetchChk.equals(fetchTxt.toString()))
-            {
-                l = i;
-                flag++;
-            }
-            
         }
         
-        if (flag == 0)
-        {
-        JOptionPane.showMessageDialog(this, "No Employee exists");
-        
-       
+        if (flag == 0){
+            JOptionPane.showMessageDialog(this, "No Employee exists");
         }
         else if (flag >=2)
         {
         JOptionPane.showMessageDialog(this, "More than one entries found");
         }
         else{
-            for (emprec i: emlist){
-                if(fetchChk.equals(fetchTxt)){
-                    tired[0] = i.getName();
-                    tired[1] = i.getID();
-                    tired[2] = i.getAge();
-                    tired[3] = i.getGender();
-                    tired[4] = i.getDate();
-                    tired[5] = i.getLevel();
-                    tired[6] = i.getInfo();
-                    tired[7] = i.getPos();
-                    tired[8] = i.getMobile();
-                    tired[9] = i.getEmail();
-                    tired[p] = newupdateTxt;
-                    
-                }  
+            for (int i=0; i<emlist.size(); i++)
+            {
+                if( (fetch == "Name")  && (fetchTxt.equals(emlist.get(i).getName())) ){
+                    fetchChk = String.valueOf(emlist.get(i).getName());
+                    if(fetchChk.equals(fetchTxt.toString())){
+                        l = i;
+                        flag++;
+                        if(fetchChk.equals(fetchTxt)){
+                            tired[0] = emlist.get(i).getName();
+                            tired[1] = emlist.get(i).getID();
+                            tired[2] = emlist.get(i).getAge();
+                            tired[3] = emlist.get(i).getGender();
+                            tired[4] = emlist.get(i).getDate();
+                            tired[5] = emlist.get(i).getLevel();
+                            tired[6] = emlist.get(i).getInfo();
+                            tired[7] = emlist.get(i).getPos();
+                            tired[8] = emlist.get(i).getMobile();
+                            tired[9] = emlist.get(i).getEmail();
+                            tired[p]= newupdateTxt;
+
+                            if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                            if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                            if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                            if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                            if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                            if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                            if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                            if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                            if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                            if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                        }
+                    }
+                if( (fetch == "ID")  && (fetchTxt.equals(String.valueOf(emlist.get(i).getID()))) ){
+                    fetchChk = String.valueOf(emlist.get(i).getID());
+                    if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                        }
+                    }
+                } 
+                
+                if( (fetch == "Age")  && (fetchTxt.equals(String.valueOf(emlist.get(i).getAge()))) ){
+                    fetchChk = String.valueOf(emlist.get(i).getAge());
+                    if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                        }
+                    }
+                }
+                
+                if( (fetch == "Gender")  && (fetchTxt.equals(emlist.get(i).getGender())) ){
+                    fetchChk = String.valueOf(emlist.get(i).getGender());
+                    if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                    }
+                }
             }
-            upnameTxt.setText(String.valueOf(tired[0]));
-            upidTxt.setText(String.valueOf(tired[1]));
-            upageTxt.setText(String.valueOf(tired[2]));
-            upgenderTxt.setText(String.valueOf(tired[3]));
-            upjoinTxt.setText(String.valueOf(tired[4]));
-            uplevelTxt.setText(String.valueOf(tired[5]));
-            upinfoTxt.setText(String.valueOf(tired[6]));
-            uptitleTxt.setText(String.valueOf(tired[7]));
-            upcellTxt.setText(String.valueOf(tired[8]));
-            upemailTxt.setText(String.valueOf(tired[9]));
+            if( (fetch == "Date")  && (fetchTxt.equals(emlist.get(i).getDate())) ){
+                fetchChk = String.valueOf(emlist.get(i).getDate());
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                    }
+                }    
+            }
+            if( (fetch == "Level")  && (fetchTxt.equals(emlist.get(i).getLevel())) ){
+                fetchChk = String.valueOf(emlist.get(i).getLevel());
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                    }
+                }
+            }
+            if( (fetch == "Pos")  && (fetchTxt.equals(emlist.get(i).getPos())) ){
+                fetchChk = String.valueOf(emlist.get(i).getPos());
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                    }
+                }
+            }
+            if( (fetch == "Mobile")  && (fetchTxt.equals(String.valueOf(emlist.get(i).getMobile()))) ){
+                fetchChk = String.valueOf(emlist.get(i).getMobile());
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                    }
+                }
+            }
+            if( (fetch == "Email")  && (fetchTxt.equals(emlist.get(i).getEmail())) ){
+                fetchChk = String.valueOf(emlist.get(i).getEmail());
+                if(fetchChk.equals(fetchTxt.toString())){
+                    l = i;
+                    flag++;
+                    if(fetchChk.equals(fetchTxt)){
+                        tired[0] = emlist.get(i).getName();
+                        tired[1] = emlist.get(i).getID();
+                        tired[2] = emlist.get(i).getAge();
+                        tired[3] = emlist.get(i).getGender();
+                        tired[4] = emlist.get(i).getDate();
+                        tired[5] = emlist.get(i).getLevel();
+                        tired[6] = emlist.get(i).getInfo();
+                        tired[7] = emlist.get(i).getPos();
+                        tired[8] = emlist.get(i).getMobile();
+                        tired[9] = emlist.get(i).getEmail();
+                        tired[p]= newupdateTxt;
+
+                        if(newupdate == "Name"){emlist.get(i).setName(newupdateTxt);}
+                        if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
+                        if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
+                        if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
+                        if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
+                        if(newupdate == "CellPhoneNumber"){emlist.get(i).setMobile(Long.parseLong(newupdateTxt));}
+                        if(newupdate == "EmailAddress"){emlist.get(i).setEmail(String.valueOf(newupdateTxt));}
+                    }
+                }
+            }
             
-            String imgPath = String.valueOf(emlist.get(l).getPhoto());
-            FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpeg", "jpg");
-            JFileChooser browseFile = new JFileChooser();
-            ImageIcon img = new ImageIcon(imgPath);
-            Image image = img.getImage().getScaledInstance(photolabel.getWidth(), photolabel.getHeight(), Image.SCALE_SMOOTH);
-            photolabel.setIcon(new ImageIcon(image));
-            
-        }
+        }     
        
+                upnameTxt.setText(String.valueOf(tired[0]));
+                upidTxt.setText(String.valueOf(tired[1]));
+                upageTxt.setText(String.valueOf(tired[2]));
+                upgenderTxt.setText(String.valueOf(tired[3]));
+                upjoinTxt.setText(String.valueOf(tired[4]));
+                uplevelTxt.setText(String.valueOf(tired[5]));
+                upinfoTxt.setText(String.valueOf(tired[6]));
+                uptitleTxt.setText(String.valueOf(tired[7]));
+                upcellTxt.setText(String.valueOf(tired[8]));
+                upemailTxt.setText(String.valueOf(tired[9]));
+                
+            }
+        }
+                
         
         
         
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void upnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upnameTxtActionPerformed
-        // TODO add your handling code here:
+          // TODO add your handling code here:
     }//GEN-LAST:event_upnameTxtActionPerformed
 
 

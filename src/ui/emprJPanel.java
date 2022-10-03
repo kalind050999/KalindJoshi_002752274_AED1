@@ -73,6 +73,7 @@ public class emprJPanel extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         genderTxt = new javax.swing.JTextField();
 
+        btnRd.setBackground(new java.awt.Color(0, 255, 204));
         btnRd.setText("View");
         btnRd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +81,7 @@ public class emprJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDlt.setBackground(new java.awt.Color(255, 51, 51));
         btnDlt.setText("Delete");
         btnDlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +272,7 @@ public class emprJPanel extends javax.swing.JPanel {
         int selectedRowIndex = viewTable.getSelectedRow();
         
         if (selectedRowIndex<0){
-            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            JOptionPane.showMessageDialog(this, "Select a row to view");
             return;
         }
         
@@ -305,7 +307,7 @@ public class emprJPanel extends javax.swing.JPanel {
         int selectedRowIndex = viewTable.getSelectedRow();
         
         if (selectedRowIndex<0){
-            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            JOptionPane.showMessageDialog(this, "Select a row to delete");
             return;
         }
         
@@ -313,7 +315,7 @@ public class emprJPanel extends javax.swing.JPanel {
         emprec selectedEmployee = (emprec)model.getValueAt(selectedRowIndex,0);
         
         his.deleteEmp(selectedEmployee);
-        JOptionPane.showMessageDialog(this, "Employee History Deleted. ");
+        JOptionPane.showMessageDialog(this, "Employee record deleted ");
         populateTable();
         
         ageTxt.setText("");

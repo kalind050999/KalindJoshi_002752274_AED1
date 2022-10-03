@@ -5,8 +5,12 @@
 package ui;
 
 import java.awt.Image;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -99,6 +103,7 @@ public class empuJPanel extends javax.swing.JPanel {
             }
         });
 
+        updateBtn.setBackground(new java.awt.Color(153, 255, 0));
         updateBtn.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 14)); // NOI18N
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -153,11 +158,11 @@ public class empuJPanel extends javax.swing.JPanel {
                         .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(330, 330, 330)
                         .addComponent(updateBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
                         .addComponent(newName, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newnameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(newnameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
@@ -205,7 +210,7 @@ public class empuJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                        .addGap(121, 121, 121))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,6 +303,7 @@ public class empuJPanel extends javax.swing.JPanel {
         IndexKey.put("Pos", 7);
         IndexKey.put("Mobile", 8);
         IndexKey.put("Email", 9);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
         ArrayList<emprec> emlist = his.getHis();
         String fetch = searchName.getSelectedItem().toString();
@@ -418,7 +424,12 @@ public class empuJPanel extends javax.swing.JPanel {
                             if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                             if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                             if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                            if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                            if(newupdate == "StartDate"){try {
+                                emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+}
                             if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                             if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                             if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -448,7 +459,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -480,7 +496,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -512,7 +533,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -543,7 +569,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -574,7 +605,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -605,7 +641,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -636,7 +677,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}
@@ -667,7 +713,12 @@ public class empuJPanel extends javax.swing.JPanel {
                         if(newupdate == "EmployeeID"){emlist.get(i).setID(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Age"){emlist.get(i).setAge(Integer.parseInt(newupdateTxt));}
                         if(newupdate == "Gender"){emlist.get(i).setGender(String.valueOf(newupdateTxt));}
-                        if(newupdate == "StartDate"){emlist.get(i).setDate(String.valueOf(newupdateTxt));}
+                        if(newupdate == "StartDate"){try {
+                            emlist.get(i).setDate(dateFormat.parse(newupdateTxt));
+                            } catch (ParseException ex) {
+                                Logger.getLogger(empuJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+}
                         if(newupdate == "Level"){emlist.get(i).setLevel(String.valueOf(newupdateTxt));}
                         if(newupdate == "TeamInfo"){emlist.get(i).setInfo(String.valueOf(newupdateTxt));}
                         if(newupdate == "PositionTitle"){emlist.get(i).setPos(String.valueOf(newupdateTxt));}

@@ -5,8 +5,11 @@
 package ui;
 
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
@@ -135,6 +138,7 @@ public class empcJPanel extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
         jLabel10.setText("Cell Phone");
 
+        jButton1.setBackground(new java.awt.Color(102, 255, 0));
         jButton1.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 13)); // NOI18N
         jButton1.setText("Save ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -330,7 +334,11 @@ public class empcJPanel extends javax.swing.JPanel {
             emp.setMobile(mobile);
             emp.setPhoto(photo);
             emp.setPos(pos);
-            emp.setDate(startdate);
+            try {
+                emp.setDate(dateFormat.parse(startdate));
+            } catch (ParseException ex) {
+                Logger.getLogger(empcJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             emp.setLevel(level);
 
             empl.add(emp);
@@ -350,16 +358,16 @@ public class empcJPanel extends javax.swing.JPanel {
             posTxt.setText("");
         }
         else if(!validate_email){
-            JOptionPane.showMessageDialog(this,"Email format not correct");
+            JOptionPane.showMessageDialog(this,"Please check your email");
         }
         else if(!validate_eid){
-            JOptionPane.showMessageDialog(this,"EID should be int");
+            JOptionPane.showMessageDialog(this,"ID should be numeric only");
         }
         else if(!validate_age){
-            JOptionPane.showMessageDialog(this,"Age should be int");
+            JOptionPane.showMessageDialog(this,"Age should be a number");
         }
         else{
-            JOptionPane.showMessageDialog(this,"Mobile format not correct");
+            JOptionPane.showMessageDialog(this,"Mobile number should be of 10 digits");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

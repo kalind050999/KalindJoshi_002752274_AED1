@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author kalindjoshi
@@ -13,7 +15,7 @@ public class emprec {
     private int ID;
     private int age;
     private String gender;
-    private String date;
+    private Date date;
     private String level;
     private String info;
     private String pos;
@@ -61,11 +63,11 @@ public class emprec {
         this.gender = gender;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

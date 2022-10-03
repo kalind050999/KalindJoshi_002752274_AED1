@@ -1,6 +1,6 @@
 # KalindJoshi_002752274_AED1
 
-Description of the assignment:
+* Description of the assignment:
 
 There is a MainFrame panel which has four buttons i.e. Add, View Update and Search. 
 
@@ -12,5 +12,5 @@ Then there is an update option where you can select which field you need to upda
 
 Lastly there is a search option where you can search an employee on the basis of fields like Name, Employee ID, Cell Phone and as soon as you click on search you will see the records if they exist otherwise you will see an error.
 
-Software used: Apache NetBeans 15
+* Software used: Apache NetBeans 15
  

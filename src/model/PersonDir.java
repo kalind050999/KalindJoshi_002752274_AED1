@@ -13,18 +13,34 @@ import java.util.ArrayList;
  */
 public class PersonDir {
     ArrayList<Person> personList;
-    System syst;
-
-    public PersonDir(System syst){
-    personList = new ArrayList<Person>();
-    this.syst = syst;
-}
-    public Person createPerson(String name, LocalDate dob, long contactNo){
-//Create person
-    Person newPerson = new Person(name, dob, contactNo);
-    //Add created person to a list
-    personList.add(newPerson);
-    return newPerson;
+    
+    public PersonDir(){
+        
+        personList = new ArrayList<Person>();
+//        this.syst = syst;   
     }
-}
 
+    public ArrayList<Person> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(ArrayList<Person> personList) {
+        this.personList = personList;
+    }
+    
+    public void addPersonToDirectory(Person person){
+        personList.add(person);
+    }
+           
+    public Person createPerson(long mob, String name, LocalDate dob, String com){
+        
+        //Create person
+        Person newPerson = new  Person(mob, name,dob, com);
+        
+        //Add created person to a list
+        personList.add(newPerson);
+        return newPerson;
+
+    }
+    
+}

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author rajmehta
+ * @author kalindjoshi
  */
 public class PatDir {
      ArrayList<Pat> patList;

@@ -17,7 +17,7 @@ public class Pat {
     private long Pid;
     Person person;
     static long flag = 0;
-    EncounterHistory encounterHistory;
+    EncounterHis encounterHistory;
     public Pat(){}
     
     public Pat(Person person){   
@@ -38,12 +38,12 @@ public class Pat {
         this.userPass = userPass;
     }
     
-    public EncounterHistory createEncounterHistory(){
+    public EncounterHis createEncounterHistory(){
         
-        return new EncounterHistory(this);
+        return new EncounterHis(this);
     }
 
-    public EncounterHistory getEncounterHistory() {
+    public EncounterHis getEncounterHistory() {
         return encounterHistory;
     }
     

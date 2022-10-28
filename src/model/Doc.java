@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kalindjoshi
@@ -13,6 +15,7 @@ public class Doc {
     Person person;
     static long count = 0;
     String docPass;
+    ArrayList<Pat> PD;
 //    EncounterHistory encounterHistory;
     
     public Doc(Person person){   
@@ -20,6 +23,10 @@ public class Doc {
         this.Did = count;
         this.person = person;
         this.docPass = (person.getName()).concat("123");
+    }
+
+    public ArrayList<Pat> getPD() {
+        return PD;
     }
 
     public String getDocPass() {
@@ -65,5 +72,9 @@ public class Doc {
         return this.getDid() == Did;
     }
     
+    public void AppointPat (Pat pat)
+    {
+        this.PD.add(pat);
+    }
     
 }

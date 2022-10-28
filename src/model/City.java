@@ -27,7 +27,7 @@ public class City {
 
     public Com getCommByObject(Com comName){
         
-        for(Com com: this.getCommList()){
+        for(Com com: this.getComList()){
             
             if(com.getComName().equals(comName)){
                 return com;
@@ -39,7 +39,7 @@ public class City {
     
     public boolean CommunityExists(String commName){
         
-        for(Com comm: this.getCommList()){
+        for(Com comm: this.getComList()){
             
             if(comm.getComName().equals(commName)){
                 return true;
@@ -57,11 +57,11 @@ public class City {
         this.cityName = cityName;
     }
 
-    public ArrayList<Com> getCommList() {
+    public ArrayList<Com> getComList() {
         return comList;
     }
 
-    public void setCommList(ArrayList<Com> commList) {
+    public void setComList(ArrayList<Com> commList) {
         this.comList = commList;
     }
 

@@ -26,7 +26,7 @@ public class Pat {
         this.person = person;
         this.userPass = (person.getName()).concat("123");
         //Create patient specific encounter history 
-        this.encounterHistory = createEncounterHistory();
+        this.encounterHistory = new EncounterHis();
         
     }
 
@@ -72,6 +72,6 @@ public class Pat {
     }
     
     public boolean matchByContact(long contact){
-        return this.person.getContactNo() == contact;
+        return this.person.getmob() == contact;
     }
 }

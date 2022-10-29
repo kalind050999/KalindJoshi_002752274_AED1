@@ -105,6 +105,7 @@ public class PatPanel extends javax.swing.JPanel {
         PatIdLbl = new javax.swing.JTextField();
         PatIdTxt = new javax.swing.JTextField();
         Searchbtn = new javax.swing.JButton();
+        LoginLandBtn = new javax.swing.JButton();
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font(".AppleSystemUIFont", 3, 18)); // NOI18N
@@ -172,14 +173,26 @@ public class PatPanel extends javax.swing.JPanel {
             }
         });
 
+        LoginLandBtn.setText("Login to see your reports");
+        LoginLandBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginLandBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(296, Short.MAX_VALUE)
-                .addComponent(Searchbtn)
-                .addGap(234, 234, 234))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Searchbtn)
+                        .addGap(234, 234, 234))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(LoginLandBtn)
+                        .addContainerGap())))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -226,7 +239,9 @@ public class PatPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
+                .addGap(84, 84, 84)
+                .addComponent(LoginLandBtn)
+                .addGap(52, 52, 52)
                 .addComponent(Searchbtn)
                 .addContainerGap(422, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,17 +422,24 @@ public class PatPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Booked Appointment with Dr.");
                     }
                     else{
-                        
+                        JOptionPane.showMessageDialog(this, "Select a doctor to book appointment");
                     }
                 }
             }
                 
        }
        else{
-           
+           JOptionPane.showMessageDialog(this, "You need to be a patient to book appointment");
        }
         
     }//GEN-LAST:event_AppointActionPerformed
+
+    private void LoginLandBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginLandBtnActionPerformed
+        // TODO add your handling code here:
+        PatPanel2 patpanel2 = new PatPanel2();
+        patpanel2.setVisible(true);
+        
+    }//GEN-LAST:event_LoginLandBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -433,6 +455,7 @@ public class PatPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane Heading;
     private javax.swing.JLabel HosLbl;
     private javax.swing.JTextField HosTxt;
+    private javax.swing.JButton LoginLandBtn;
     private javax.swing.JTextField PatIdLbl;
     private javax.swing.JTextField PatIdTxt;
     private javax.swing.JComboBox<String> PersonDrop;

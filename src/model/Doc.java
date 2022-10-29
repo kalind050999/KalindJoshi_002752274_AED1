@@ -23,6 +23,7 @@ public class Doc {
         this.Did = count;
         this.person = person;
         this.docPass = (person.getName()).concat("123");
+        this.PD = new ArrayList<Pat>();
     }
 
     public ArrayList<Pat> getPD() {

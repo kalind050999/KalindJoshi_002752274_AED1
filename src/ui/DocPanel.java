@@ -7,6 +7,7 @@ package ui;
 import Parser.Parser;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import model.Doc;
 import model.DocDir;
 import model.Pat;
 import model.PatDir;
@@ -30,6 +31,8 @@ public class DocPanel extends javax.swing.JPanel {
     Pat pat1;
     Parser parser;
     boolean is_logged = false;
+    ArrayList<Doc> DocList;
+    
     
     public DocPanel() {
         initComponents();
@@ -39,20 +42,25 @@ public class DocPanel extends javax.swing.JPanel {
         initComponents();
         
         this.patDir = patDir;
+        DocList = docDir.getDocList();
         patList = patDir.getPatList();
         this.docDir = docDir;
         
-        model = (DefaultTableModel) person_dir_table.getModel();
+        DocLogin.setVisible(True);
+        
+        model = (DefaultTableModel) PerDirTab.getModel();
         model.setRowCount(0);
         
-        model1 = (DefaultTableModel) person_directory_table.getModel();
+        model1 = (DefaultTableModel) PreEncTab.getModel();
         model1.setRowCount(0);
                     
         for(Pat p:patList){
-            Object[] row= new Object[3];
-            row[0]= p.getId();
+            Object[] row= new Object[4];
+            row[0]= p.getPid();
             row[1]= p.getPerson().getName();
             row[2]= p.getPerson().getAge();
+            row[3]= p.getPerson().getCom();
+            
             model.addRow(row);
             model1.addRow(row);
         }
@@ -67,19 +75,336 @@ public class DocPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        DocLogin = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        userIDInput = new javax.swing.JTextField();
+        userPasswordInput = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        Searchbtn1 = new javax.swing.JButton();
+        DocEnc = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        PerDirTab = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        PreEncTab = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        PrevEncBtn = new javax.swing.JButton();
+
+        setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("Doc ID");
+
+        jLabel6.setText("Password");
+
+        Searchbtn1.setText("Login");
+        Searchbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Searchbtn1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout DocLoginLayout = new javax.swing.GroupLayout(DocLogin);
+        DocLogin.setLayout(DocLoginLayout);
+        DocLoginLayout.setHorizontalGroup(
+            DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocLoginLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Searchbtn1)
+                    .addGroup(DocLoginLayout.createSequentialGroup()
+                        .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(userIDInput))))
+                .addGap(139, 139, 139))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        DocLoginLayout.setVerticalGroup(
+            DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocLoginLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(userIDInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(userPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Searchbtn1)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
+
+        add(DocLogin, "card2");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Blood Pressure", "Heartbeat", "Weight", "Symptoms"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setText("Heartbeat");
+
+        jLabel3.setText("Weight");
+
+        jLabel4.setText("Symptoms");
+
+        jButton1.setText("Add ");
+
+        PerDirTab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Age", "Community"
+            }
+        ));
+        jScrollPane3.setViewportView(PerDirTab);
+
+        jLabel5.setText("Blood Pressure");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField4))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(jButton1)
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("New Encounter", jPanel3);
+
+        PreEncTab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Age", "Community"
+            }
+        ));
+        jScrollPane4.setViewportView(PreEncTab);
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Blood Pressure", "Heartbeat", "Weight", "Symptoms"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable5);
+
+        PrevEncBtn.setText("View Previous Reports");
+        PrevEncBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrevEncBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(244, 244, 244)
+                .addComponent(PrevEncBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(PrevEncBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
+        );
+
+        jTabbedPane1.addTab("Previous Encounter", jPanel4);
+
+        javax.swing.GroupLayout DocEncLayout = new javax.swing.GroupLayout(DocEnc);
+        DocEnc.setLayout(DocEncLayout);
+        DocEncLayout.setHorizontalGroup(
+            DocEncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        DocEncLayout.setVerticalGroup(
+            DocEncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+
+        add(DocEnc, "card3");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PrevEncBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevEncBtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_PrevEncBtnActionPerformed
+
+    private void Searchbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Searchbtn1ActionPerformed
+        // TODO add your handling code here:
+        patPanel3.setVisible(true);
+        patPanel2.setVisible(false);
+        DefaultTableModel encTabMod = (DefaultTableModel) encountTab.getModel();
+        encTabMod.setRowCount(0);
+
+        long userIDCred = Long.parseLong(userIDInput.getText());
+        String userPassCred = String.valueOf(userPasswordInput.getText());
+
+        for(Pat p: patDir.getPatList()){
+            if(p.getPid() == userIDCred && (p.getUserPass() == null ? userPassCred == null : p.getUserPass().equals(userPassCred))){
+                patLogIn = true;
+            }
+        }
+        if(patLogIn){
+            patList = patDir.getPatList();
+            for(int i = 0; i < patList.size(); i++){
+                if(userIDCred == patList.get(i).getPid()){
+                    Person p = patList.get(i).getPerson();
+                    patCom = p.getCom();
+                }
+            }
+            for(Pat p: patList){
+                if(userIDCred == p.getPid()){
+                    selectPat = p;
+                }
+            }
+            for(Encounter e: selectPat.getPatEncounterHistory()){
+                Object[] row = new Object[4];
+                row[0] = e.getEid();
+                row[1] = e.getLastVisitDate();
+                row[2] = e.getVitals().getBloodPressure();
+                row[3] = e.getVitals().getHeartBeat();
+                encTabMod.addRow(row);
+            }
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please login to view reports");
+
+        }
+    }//GEN-LAST:event_Searchbtn1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel DocEnc;
+    private javax.swing.JPanel DocLogin;
+    private javax.swing.JTable PerDirTab;
+    private javax.swing.JTable PreEncTab;
+    private javax.swing.JButton PrevEncBtn;
+    private javax.swing.JButton Searchbtn1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField userIDInput;
+    private javax.swing.JTextField userPasswordInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@ public class PatDir {
         
        for(Pat p: patList){
             
-            if(p.matchById(id)){
+            if(p.matchByPid(id)){
                 return p;
             }
             

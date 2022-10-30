@@ -6,11 +6,14 @@ package ui;
 
 import Parser.Parser;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Doc;
 import model.DocDir;
+import model.Encounter;
 import model.Pat;
 import model.PatDir;
+import model.VitalSigns;
 
 /**
  *
@@ -25,13 +28,22 @@ public class DocPanel extends javax.swing.JPanel {
     PatDir patDir;
     DocDir docDir;
     ArrayList<Pat> patList;
+    ArrayList<Doc> DocList;
     DefaultTableModel model;
     DefaultTableModel model1;
     Pat pat;
     Pat pat1;
+    Doc doc;
     Parser parser;
     boolean is_logged = false;
-    ArrayList<Doc> DocList;
+    Pat patAdd;
+    Pat patView;
+    Pat selectPat;
+    boolean doclogin;
+    
+    
+    
+    
     
     
     public DocPanel() {
@@ -46,12 +58,13 @@ public class DocPanel extends javax.swing.JPanel {
         patList = patDir.getPatList();
         this.docDir = docDir;
         
-        DocLogin.setVisible(True);
+        DocLogin.setVisible(true);
         
-        model = (DefaultTableModel) PerDirTab.getModel();
+        model = (DefaultTableModel) PerDirTab.getModel();//personADirmodel
         model.setRowCount(0);
         
-        model1 = (DefaultTableModel) PreEncTab.getModel();
+        
+        model1 = (DefaultTableModel) PreEncTab.getModel();//personVdirmodel
         model1.setRowCount(0);
                     
         for(Pat p:patList){
@@ -77,10 +90,10 @@ public class DocPanel extends javax.swing.JPanel {
 
         DocLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        userIDInput = new javax.swing.JTextField();
-        userPasswordInput = new javax.swing.JTextField();
+        DocIdTxt = new javax.swing.JTextField();
+        DocPassTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Searchbtn1 = new javax.swing.JButton();
+        DocLogBtn = new javax.swing.JButton();
         DocEnc = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -89,11 +102,11 @@ public class DocPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BPInput = new javax.swing.JTextField();
+        HBInput = new javax.swing.JTextField();
+        WeightInput = new javax.swing.JTextField();
+        SympInput = new javax.swing.JTextField();
+        addVital = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         PerDirTab = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -101,19 +114,25 @@ public class DocPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         PreEncTab = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        encTab = new javax.swing.JTable();
         PrevEncBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
         jLabel1.setText("Doc ID");
 
+        DocPassTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DocPassTxtActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Password");
 
-        Searchbtn1.setText("Login");
-        Searchbtn1.addActionListener(new java.awt.event.ActionListener() {
+        DocLogBtn.setText("Login");
+        DocLogBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Searchbtn1ActionPerformed(evt);
+                DocLogBtnActionPerformed(evt);
             }
         });
 
@@ -124,15 +143,15 @@ public class DocPanel extends javax.swing.JPanel {
             .addGroup(DocLoginLayout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Searchbtn1)
+                    .addComponent(DocLogBtn)
                     .addGroup(DocLoginLayout.createSequentialGroup()
                         .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(userIDInput))))
+                            .addComponent(DocPassTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(DocIdTxt))))
                 .addGap(139, 139, 139))
         );
         DocLoginLayout.setVerticalGroup(
@@ -141,14 +160,14 @@ public class DocPanel extends javax.swing.JPanel {
                 .addGap(117, 117, 117)
                 .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(userIDInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DocIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(DocLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(userPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DocPassTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Searchbtn1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addComponent(DocLogBtn)
+                .addContainerGap(651, Short.MAX_VALUE))
         );
 
         add(DocLogin, "card2");
@@ -172,7 +191,12 @@ public class DocPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Symptoms");
 
-        jButton1.setText("Add ");
+        addVital.setText("Add ");
+        addVital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVitalActionPerformed(evt);
+            }
+        });
 
         PerDirTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,18 +229,18 @@ public class DocPanel extends javax.swing.JPanel {
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(46, 46, 46)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4))
+                            .addComponent(addVital, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(BPInput)
+                            .addComponent(HBInput)
+                            .addComponent(WeightInput)
+                            .addComponent(SympInput))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -224,24 +248,24 @@ public class DocPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BPInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(HBInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WeightInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SympInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addComponent(jButton1)
+                .addComponent(addVital)
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -262,18 +286,18 @@ public class DocPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(PreEncTab);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        encTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Blood Pressure", "Heartbeat", "Weight", "Symptoms"
+                "Name", "Enc ID", "Blood Pressure", "Heartbeat", "Weight", "Symptoms"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(encTab);
 
         PrevEncBtn.setText("View Previous Reports");
         PrevEncBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -290,7 +314,7 @@ public class DocPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane5)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(244, 244, 244)
@@ -304,7 +328,7 @@ public class DocPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addComponent(PrevEncBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
         );
@@ -327,64 +351,129 @@ public class DocPanel extends javax.swing.JPanel {
 
     private void PrevEncBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevEncBtnActionPerformed
         // TODO add your handling code here:
+        model = (DefaultTableModel) encTab.getModel();
+        model.setRowCount(0);
         
+        long patID = (long)model1.getValueAt(PreEncTab.getSelectedRow(), 0);
+        patList = patDir.getPatList();
+        for(Pat p: patList){
+            if(patID == p.getPid())
+            {
+                selectPat = p;
+            }
+        }
+        for(Encounter e: selectPat.getPatEncounterHistory()){
+            Object [] row = new Object [6];
+            row[0] = selectPat.getPerson().getName();
+            row[1] = e.getEid();
+            row[2] = e.getVitals().getBloodPressure();
+            row[3] = e.getVitals().getHeartBeat();
+            row[4] = e.getVitals().getBodyWeight();
+            row[5] = e.getVitals().getSymptoms();
+            model.addRow(row);
+        }
         
         
     }//GEN-LAST:event_PrevEncBtnActionPerformed
 
-    private void Searchbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Searchbtn1ActionPerformed
+    private void DocLogBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocLogBtnActionPerformed
         // TODO add your handling code here:
-        patPanel3.setVisible(true);
-        patPanel2.setVisible(false);
-        DefaultTableModel encTabMod = (DefaultTableModel) encountTab.getModel();
-        encTabMod.setRowCount(0);
+       long docID = Long.parseLong(DocIdTxt.getText());
+       String docPass = String.valueOf(DocPassTxt.getText());
+       
+       for(Doc d: docDir.getDocList())
+       {
+           if(d.getDid() == docID && d.getDocPass() == null ? docPass == null : d.getDocPass().equals(docPass))
+           {
+           doclogin = true;
+           }
+               
+       }
+       if(doclogin)
+       {
+           DocLogin.setVisible(false);
+           DocEnc.setVisible(true);
+           
+           DocList = docDir.getDocList();
+           for(int i = 0; i< DocList.size(); i++)
+           {
+               if(docID == DocList.get(i).getDid())
+               {
+                  doc = DocList.get(i);
+               }
+           }
+           populatePatTable();
+       }
+       else
+       {
+           JOptionPane.showMessageDialog(this, "Login to view encounters");
+       }
+       
+    }//GEN-LAST:event_DocLogBtnActionPerformed
 
-        long userIDCred = Long.parseLong(userIDInput.getText());
-        String userPassCred = String.valueOf(userPasswordInput.getText());
+    private void DocPassTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocPassTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DocPassTxtActionPerformed
 
-        for(Pat p: patDir.getPatList()){
-            if(p.getPid() == userIDCred && (p.getUserPass() == null ? userPassCred == null : p.getUserPass().equals(userPassCred))){
-                patLogIn = true;
-            }
+    private void addVitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVitalActionPerformed
+        // TODO add your handling code here:
+        if (PerDirTab.getSelectedRow()<0){
+                JOptionPane.showMessageDialog(this, "Select a patient to add vitals");
         }
-        if(patLogIn){
-            patList = patDir.getPatList();
-            for(int i = 0; i < patList.size(); i++){
-                if(userIDCred == patList.get(i).getPid()){
-                    Person p = patList.get(i).getPerson();
-                    patCom = p.getCom();
+        else
+        {
+            long patIDChk= (long) model.getValueAt(PerDirTab.getSelectedRow(), 0);
+            for(Pat p:patDir.getPatList()){
+                if(patIDChk == p.getPid())
+                {
+                patAdd = p;
                 }
             }
-            for(Pat p: patList){
-                if(userIDCred == p.getPid()){
-                    selectPat = p;
-                }
-            }
-            for(Encounter e: selectPat.getPatEncounterHistory()){
-                Object[] row = new Object[4];
-                row[0] = e.getEid();
-                row[1] = e.getLastVisitDate();
-                row[2] = e.getVitals().getBloodPressure();
-                row[3] = e.getVitals().getHeartBeat();
-                encTabMod.addRow(row);
-            }
-
+            float BP = Float.parseFloat(BPInput.getText());
+            float HB = Float.parseFloat(HBInput.getText());
+            float weight = Float.parseFloat(WeightInput.getText());
+            String symp = SympInput.getText();
+            
+            patAdd.getEncounterHistory().addEncounter(new VitalSigns(BP, HB, weight, symp));
+            JOptionPane.showMessageDialog(this, "Visit with Doctor saved");
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Please login to view reports");
+    }//GEN-LAST:event_addVitalActionPerformed
 
+    public void populatePatTable()
+       {
+           model = (DefaultTableModel) PerDirTab.getModel();//personADirmodel
+        model.setRowCount(0);
+        
+        model1 = (DefaultTableModel) PreEncTab.getModel();//personVdirmodel
+        model1.setRowCount(0);
+        
+        for(Pat p:doc.getPD()){
+            Object[] row= new Object[4];
+            row[0]= p.getPid();
+            row[1]= p.getPerson().getName();
+            row[2]= p.getPerson().getAge();
+            row[3]= p.getPerson().getCom();
+            
+            model.addRow(row);
+            model1.addRow(row);
         }
-    }//GEN-LAST:event_Searchbtn1ActionPerformed
-
+       }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField BPInput;
     private javax.swing.JPanel DocEnc;
+    private javax.swing.JTextField DocIdTxt;
+    private javax.swing.JButton DocLogBtn;
     private javax.swing.JPanel DocLogin;
+    private javax.swing.JTextField DocPassTxt;
+    private javax.swing.JTextField HBInput;
     private javax.swing.JTable PerDirTab;
     private javax.swing.JTable PreEncTab;
     private javax.swing.JButton PrevEncBtn;
-    private javax.swing.JButton Searchbtn1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField SympInput;
+    private javax.swing.JTextField WeightInput;
+    private javax.swing.JButton addVital;
+    private javax.swing.JTable encTab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -399,12 +488,5 @@ public class DocPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField userIDInput;
-    private javax.swing.JTextField userPasswordInput;
     // End of variables declaration//GEN-END:variables
 }

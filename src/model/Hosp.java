@@ -29,9 +29,10 @@ public class Hosp {
         this.doctorHosp=new ArrayList<Doc>();
     }
     
-    public void addDoctorToHospital(Doc doctor){
+    public Doc addDoctorToHospital(Doc doctor){
         
         this.getDoctorHosp().add(doctor);
+        return doctor;
     }
 
     public int getHospNum() {

@@ -28,6 +28,10 @@ public class Com {
         this.hospitalList = new ArrayList<>();
         this.comName = comName;
     }
+
+    public void setHouseList(ArrayList<House> houseList) {
+        this.houseList = houseList;
+    }
     
      public ArrayList<House> getHouseList() {
         return houseList;

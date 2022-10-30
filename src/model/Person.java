@@ -31,6 +31,14 @@ public class Person {
         this.com = com;       
     }
 
+    public long getMob() {
+        return mob;
+    }
+
+    public void setMob(long mob) {
+        this.mob = mob;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

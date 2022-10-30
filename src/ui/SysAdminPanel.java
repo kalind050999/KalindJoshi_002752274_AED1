@@ -148,66 +148,272 @@ public class SysAdminPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        SysLogin = new javax.swing.JPanel();
+        sysAdminIDText = new javax.swing.JLabel();
+        sysAdminPassText = new javax.swing.JLabel();
+        SysAdminIDField = new javax.swing.JTextField();
+        SysAdminPassField = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
+        SysMenu = new javax.swing.JPanel();
+        ManageCom = new javax.swing.JButton();
+        ManageDoc = new javax.swing.JButton();
+        ManageHos = new javax.swing.JButton();
+        ManagePat = new javax.swing.JButton();
+        ManagePer = new javax.swing.JButton();
+        ManageEnc = new javax.swing.JButton();
+        SysPat = new javax.swing.JPanel();
+        SysPer = new javax.swing.JPanel();
+        SysDoc = new javax.swing.JPanel();
+        SysEnc = new javax.swing.JPanel();
+        SysHos = new javax.swing.JPanel();
+        SysCom = new javax.swing.JPanel();
 
-        jButton8.setText("Manage Community");
+        setLayout(new java.awt.CardLayout());
 
-        jButton9.setText("Manage Doctor");
+        sysAdminIDText.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        sysAdminIDText.setText(" Sys ID:");
 
-        jButton10.setText("Manage Hospital");
+        sysAdminPassText.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        sysAdminPassText.setText("Password:");
 
-        jButton13.setText("Manage Patient");
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Manage Person");
-
-        jButton7.setText("Manage Encounter");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(249, Short.MAX_VALUE))
+        javax.swing.GroupLayout SysLoginLayout = new javax.swing.GroupLayout(SysLogin);
+        SysLogin.setLayout(SysLoginLayout);
+        SysLoginLayout.setHorizontalGroup(
+            SysLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SysLoginLayout.createSequentialGroup()
+                .addGroup(SysLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SysLoginLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(sysAdminPassText, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SysLoginLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(sysAdminIDText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(SysLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SysAdminIDField, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                    .addComponent(SysAdminPassField))
+                .addGap(109, 109, 109))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(jButton6)
+        SysLoginLayout.setVerticalGroup(
+            SysLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SysLoginLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addGroup(SysLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SysAdminIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sysAdminIDText))
                 .addGap(18, 18, 18)
-                .addComponent(jButton13)
-                .addGap(18, 18, 18)
-                .addComponent(jButton8)
-                .addGap(18, 18, 18)
-                .addComponent(jButton9)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
-                .addGap(18, 18, 18)
-                .addComponent(jButton10)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGroup(SysLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sysAdminPassText)
+                    .addComponent(SysAdminPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(loginButton)
+                .addContainerGap(291, Short.MAX_VALUE))
         );
+
+        add(SysLogin, "card9");
+
+        ManageCom.setText("Manage Community");
+        ManageCom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageComActionPerformed(evt);
+            }
+        });
+
+        ManageDoc.setText("Manage Doctor");
+
+        ManageHos.setText("Manage Hospital");
+
+        ManagePat.setText("Manage Patient");
+
+        ManagePer.setText("Manage Person");
+        ManagePer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManagePerActionPerformed(evt);
+            }
+        });
+
+        ManageEnc.setText("Manage Encounter");
+
+        javax.swing.GroupLayout SysMenuLayout = new javax.swing.GroupLayout(SysMenu);
+        SysMenu.setLayout(SysMenuLayout);
+        SysMenuLayout.setHorizontalGroup(
+            SysMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SysMenuLayout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addGroup(SysMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ManageDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManageEnc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManageCom, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                    .addComponent(ManageHos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManagePat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManagePer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+        SysMenuLayout.setVerticalGroup(
+            SysMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SysMenuLayout.createSequentialGroup()
+                .addContainerGap(143, Short.MAX_VALUE)
+                .addComponent(ManagePer)
+                .addGap(18, 18, 18)
+                .addComponent(ManagePat)
+                .addGap(18, 18, 18)
+                .addComponent(ManageHos)
+                .addGap(18, 18, 18)
+                .addComponent(ManageDoc)
+                .addGap(19, 19, 19)
+                .addComponent(ManageEnc)
+                .addGap(18, 18, 18)
+                .addComponent(ManageCom)
+                .addGap(228, 228, 228))
+        );
+
+        add(SysMenu, "card8");
+
+        javax.swing.GroupLayout SysPatLayout = new javax.swing.GroupLayout(SysPat);
+        SysPat.setLayout(SysPatLayout);
+        SysPatLayout.setHorizontalGroup(
+            SysPatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+        SysPatLayout.setVerticalGroup(
+            SysPatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        add(SysPat, "card3");
+
+        javax.swing.GroupLayout SysPerLayout = new javax.swing.GroupLayout(SysPer);
+        SysPer.setLayout(SysPerLayout);
+        SysPerLayout.setHorizontalGroup(
+            SysPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+        SysPerLayout.setVerticalGroup(
+            SysPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        add(SysPer, "card4");
+
+        javax.swing.GroupLayout SysDocLayout = new javax.swing.GroupLayout(SysDoc);
+        SysDoc.setLayout(SysDocLayout);
+        SysDocLayout.setHorizontalGroup(
+            SysDocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+        SysDocLayout.setVerticalGroup(
+            SysDocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        add(SysDoc, "card5");
+
+        javax.swing.GroupLayout SysEncLayout = new javax.swing.GroupLayout(SysEnc);
+        SysEnc.setLayout(SysEncLayout);
+        SysEncLayout.setHorizontalGroup(
+            SysEncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+        SysEncLayout.setVerticalGroup(
+            SysEncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        add(SysEnc, "card6");
+
+        javax.swing.GroupLayout SysHosLayout = new javax.swing.GroupLayout(SysHos);
+        SysHos.setLayout(SysHosLayout);
+        SysHosLayout.setHorizontalGroup(
+            SysHosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+        SysHosLayout.setVerticalGroup(
+            SysHosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        add(SysHos, "card7");
+
+        javax.swing.GroupLayout SysComLayout = new javax.swing.GroupLayout(SysCom);
+        SysCom.setLayout(SysComLayout);
+        SysComLayout.setHorizontalGroup(
+            SysComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 643, Short.MAX_VALUE)
+        );
+        SysComLayout.setVerticalGroup(
+            SysComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        add(SysCom, "card8");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ManagePerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePerActionPerformed
+        // TODO add your handling code here:
+            
+    }//GEN-LAST:event_ManagePerActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        if(parser.isLong(communityAdminIDField.getText()) && !parser.checkNull(communityAdminIDField.getText())){
+            long communityAdminIDCred = Long.parseLong(communityAdminIDField.getText());
+            if(!parser.checkNull(communityAdminPasswordField.getText())){
+                String communityAdminPassCred = String.valueOf(communityAdminPasswordField.getText());
+                long cAIC = Long.parseLong("123");
+                String cAPC = "Comad123";
+
+                if(cAIC == communityAdminIDCred && (cAPC == null ? communityAdminPassCred == null : String.valueOf(cAPC).equals(communityAdminPassCred))){
+                    comAdminLogIn = true;
+                }
+                if(comAdminLogIn){
+                    ComLogin.setVisible(false);
+                    ComAdmin.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Login to go ahead");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Password cannot not be empty");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "PatientID should be int and not empty");
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void ManageComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageComActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ManageComActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton ManageCom;
+    private javax.swing.JButton ManageDoc;
+    private javax.swing.JButton ManageEnc;
+    private javax.swing.JButton ManageHos;
+    private javax.swing.JButton ManagePat;
+    private javax.swing.JButton ManagePer;
+    private javax.swing.JTextField SysAdminIDField;
+    private javax.swing.JTextField SysAdminPassField;
+    private javax.swing.JPanel SysCom;
+    private javax.swing.JPanel SysDoc;
+    private javax.swing.JPanel SysEnc;
+    private javax.swing.JPanel SysHos;
+    private javax.swing.JPanel SysLogin;
+    private javax.swing.JPanel SysMenu;
+    private javax.swing.JPanel SysPat;
+    private javax.swing.JPanel SysPer;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JLabel sysAdminIDText;
+    private javax.swing.JLabel sysAdminPassText;
     // End of variables declaration//GEN-END:variables
 }

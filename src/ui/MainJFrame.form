@@ -60,7 +60,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton3" alignment="0" pref="178" max="32767" attributes="0"/>
+                                  <Component id="ComLogBtn" alignment="0" pref="178" max="32767" attributes="0"/>
                                   <Component id="DocLogBtn" alignment="0" max="32767" attributes="0"/>
                                   <Component id="PatientLogBtn" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -81,7 +81,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="DocLogBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ComLogBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -108,12 +108,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="ComLogBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Community Login"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComLogBtnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="DocLogBtn">

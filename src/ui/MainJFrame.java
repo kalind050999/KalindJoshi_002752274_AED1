@@ -132,7 +132,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         DocLogBtn = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        HosBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,10 +168,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Hospital Admin ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        HosBtn.setText("Hospital Admin ");
+        HosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                HosBtnActionPerformed(evt);
             }
         });
 
@@ -188,7 +188,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(DocLogBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(PatientLogBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -204,7 +204,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(HosBtn)
                 .addContainerGap(311, Short.MAX_VALUE))
         );
 
@@ -262,9 +262,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(docPanel);
     }//GEN-LAST:event_DocLogBtnActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void HosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HosBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        HospPanel hospPanel = new HospPanel(docDir, system, comList, patientDir, newHosp, city, hospDir, pd);
+        jSplitPane1.setRightComponent(hospPanel);
+        
+    }//GEN-LAST:event_HosBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,10 +306,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DocLogBtn;
+    private javax.swing.JButton HosBtn;
     private javax.swing.JButton PatientLogBtn;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;

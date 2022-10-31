@@ -119,6 +119,8 @@ public class DocPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        DocLogin.setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setText("Doc ID");
 
         DocPassTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +131,7 @@ public class DocPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Password");
 
+        DocLogBtn.setBackground(new java.awt.Color(102, 255, 102));
         DocLogBtn.setText("Login");
         DocLogBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +175,9 @@ public class DocPanel extends javax.swing.JPanel {
 
         add(DocLogin, "card2");
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+
+        jTable1.setBackground(new java.awt.Color(255, 204, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -191,6 +197,7 @@ public class DocPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Symptoms");
 
+        addVital.setBackground(new java.awt.Color(102, 255, 102));
         addVital.setText("Add ");
         addVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +205,7 @@ public class DocPanel extends javax.swing.JPanel {
             }
         });
 
+        PerDirTab.setBackground(new java.awt.Color(255, 204, 204));
         PerDirTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -273,6 +281,7 @@ public class DocPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("New Encounter", jPanel3);
 
+        PreEncTab.setBackground(new java.awt.Color(255, 204, 204));
         PreEncTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -286,6 +295,7 @@ public class DocPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(PreEncTab);
 
+        encTab.setBackground(new java.awt.Color(255, 204, 204));
         encTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},

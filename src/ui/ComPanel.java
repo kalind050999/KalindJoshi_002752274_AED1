@@ -160,12 +160,15 @@ public class ComPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        ComLogin.setBackground(new java.awt.Color(204, 204, 255));
+
         communityAdminIDText.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         communityAdminIDText.setText(" Admin ID:");
 
         communityAdminPasswordText.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         communityAdminPasswordText.setText("Password:");
 
+        loginButton.setBackground(new java.awt.Color(102, 255, 102));
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,9 +190,9 @@ public class ComPanel extends javax.swing.JPanel {
                         .addComponent(communityAdminIDText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(ComLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(communityAdminIDField, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addComponent(communityAdminPasswordField))
+                    .addComponent(communityAdminPasswordField)
+                    .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(109, 109, 109))
         );
         ComLoginLayout.setVerticalGroup(
@@ -203,18 +206,21 @@ public class ComPanel extends javax.swing.JPanel {
                 .addGroup(ComLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(communityAdminPasswordText)
                     .addComponent(communityAdminPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addComponent(loginButton)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
 
         add(ComLogin, "card2");
+
+        ComAdmin.setBackground(new java.awt.Color(204, 204, 255));
 
         communityDropbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Communities:");
 
+        hospitalTable.setBackground(new java.awt.Color(255, 204, 204));
         hospitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -236,6 +242,7 @@ public class ComPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(hospitalTable);
 
+        createHospitalButton.setBackground(new java.awt.Color(102, 255, 102));
         createHospitalButton.setText("Add new hospital");
         createHospitalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +257,7 @@ public class ComPanel extends javax.swing.JPanel {
             }
         });
 
+        houseTable.setBackground(new java.awt.Color(255, 204, 204));
         houseTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -271,6 +279,7 @@ public class ComPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(houseTable);
 
+        createHouseButton.setBackground(new java.awt.Color(102, 255, 102));
         createHouseButton.setText("Add new house");
         createHouseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,6 +396,9 @@ public class ComPanel extends javax.swing.JPanel {
 
         add(ComAdmin, "card3");
 
+        manageDoc.setBackground(new java.awt.Color(204, 204, 255));
+
+        manageDoctorTable.setBackground(new java.awt.Color(255, 204, 204));
         manageDoctorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -408,6 +420,7 @@ public class ComPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(manageDoctorTable);
 
+        managePersonTable.setBackground(new java.awt.Color(255, 204, 204));
         managePersonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -478,6 +491,9 @@ public class ComPanel extends javax.swing.JPanel {
 
         add(manageDoc, "card4");
 
+        CreateNewHosp.setBackground(new java.awt.Color(204, 204, 255));
+
+        createHospitalTable.setBackground(new java.awt.Color(255, 204, 204));
         createHospitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -577,9 +593,9 @@ public class ComPanel extends javax.swing.JPanel {
         CreateNewHospLayout.setVerticalGroup(
             CreateNewHospLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreateNewHospLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(63, 63, 63)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(53, 53, 53)
                 .addGroup(CreateNewHospLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(hospitalNumberInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -601,6 +617,8 @@ public class ComPanel extends javax.swing.JPanel {
         );
 
         add(CreateNewHosp, "card5");
+
+        CreateNewHouse.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel19.setText("House Number:");
@@ -637,6 +655,7 @@ public class ComPanel extends javax.swing.JPanel {
             }
         });
 
+        createHouse.setBackground(new java.awt.Color(102, 255, 102));
         createHouse.setText("Create");
         createHouse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -650,6 +669,7 @@ public class ComPanel extends javax.swing.JPanel {
             }
         });
 
+        createHouseTable.setBackground(new java.awt.Color(255, 204, 204));
         createHouseTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},

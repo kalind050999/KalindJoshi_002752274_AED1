@@ -129,7 +129,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         PatientLogBtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        SysLogin = new javax.swing.JButton();
         ComLogBtn = new javax.swing.JButton();
         DocLogBtn = new javax.swing.JButton();
         HosBtn = new javax.swing.JButton();
@@ -147,10 +147,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("System Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SysLogin.setText("System Login");
+        SysLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SysLoginActionPerformed(evt);
             }
         });
 
@@ -189,7 +189,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(PatientLogBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(HosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(SysLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -202,7 +202,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComLogBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(SysLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HosBtn)
                 .addContainerGap(311, Short.MAX_VALUE))
@@ -246,11 +246,13 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(pPanel2);
     }//GEN-LAST:event_PatientLogBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SysLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SysLoginActionPerformed
         // TODO add your handling code here:
+        SysAdPanel syspanel = new SysAdPanel(city,comList, patientDir, hospDir, pd, docDir, system);
+        jSplitPane1.setRightComponent(syspanel);
         
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SysLoginActionPerformed
 
     private void ComLogBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComLogBtnActionPerformed
         // TODO add your handling code here:
@@ -312,7 +314,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton DocLogBtn;
     private javax.swing.JButton HosBtn;
     private javax.swing.JButton PatientLogBtn;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton SysLogin;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;

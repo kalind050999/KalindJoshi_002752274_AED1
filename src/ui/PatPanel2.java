@@ -118,12 +118,15 @@ public class PatPanel2 extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        patPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font(".AppleSystemUIFont", 3, 18)); // NOI18N
         jTextArea2.setRows(5);
         jTextArea2.setText("Available doctors for your area:");
         Heading.setViewportView(jTextArea2);
 
+        DocTable.setBackground(new java.awt.Color(255, 204, 204));
         DocTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -177,6 +180,7 @@ public class PatPanel2 extends javax.swing.JPanel {
             }
         });
 
+        Searchbtn.setBackground(new java.awt.Color(102, 255, 102));
         Searchbtn.setText("Search");
         Searchbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,7 +258,7 @@ public class PatPanel2 extends javax.swing.JPanel {
                 .addComponent(LoginLandBtn)
                 .addGap(52, 52, 52)
                 .addComponent(Searchbtn)
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(422, Short.MAX_VALUE))
             .addGroup(patPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patPanel1Layout.createSequentialGroup()
                     .addGap(9, 9, 9)
@@ -265,7 +269,7 @@ public class PatPanel2 extends javax.swing.JPanel {
                         .addComponent(PatIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PatIdLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PersonDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                     .addComponent(jTable, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addGroup(patPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -292,6 +296,8 @@ public class PatPanel2 extends javax.swing.JPanel {
         );
 
         add(patPanel1, "card3");
+
+        patPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font(".AppleSystemUIFont", 3, 18)); // NOI18N
@@ -349,6 +355,9 @@ public class PatPanel2 extends javax.swing.JPanel {
 
         add(patPanel2, "card2");
 
+        patPanel3.setBackground(new java.awt.Color(204, 204, 255));
+
+        encountTab.setBackground(new java.awt.Color(255, 204, 204));
         encountTab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

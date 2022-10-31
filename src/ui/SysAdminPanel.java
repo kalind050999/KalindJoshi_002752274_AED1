@@ -5,6 +5,7 @@
 package ui;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
 import model.Com;
@@ -358,7 +359,18 @@ public class SysAdminPanel extends javax.swing.JPanel {
 
     private void ManagePerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePerActionPerformed
         // TODO add your handling code here:
-            
+        managePersonPanel.setVisible(true);
+        systemAdminPanel.setVisible(false);
+        showPersonTable();
+        for(Community c: city.getCommunityList()){
+            for(House h: c.getHouseList()){
+                houseListDropbox.addItem(String.valueOf(h.getHouseNumber()));
+            }
+        }
+        personCommunityDropbox.removeAllItems();
+        for(Community c: city.getCommunityList()){
+            personCommunityDropbox.addItem(c.getCommunityName());
+        }
     }//GEN-LAST:event_ManagePerActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -393,6 +405,154 @@ public class SysAdminPanel extends javax.swing.JPanel {
     private void ManageComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageComActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ManageComActionPerformed
+
+    public void showPersonTable(){
+        DefaultTableModel managePersonModel = (DefaultTableModel) personTable.getModel();
+        managePersonModel.setRowCount(0);
+        DefaultTableModel managePatientPersonModel = (DefaultTableModel) managePatientPersonTable.getModel();
+        managePatientPersonModel.setRowCount(0);
+        
+        for (Person person : personDirectory.getPersonList()) {
+            Object[] row = new Object[5];
+            row[0] = person;
+            row[1] = person.getPersonAge();
+            row[2] = person.getPersonDOB();
+            row[3] = person.getPersonCellPhoneNumber();
+            row[4] = person.getPersonCommunity();
+            managePersonModel.addRow(row);
+            managePatientPersonModel.addRow(row);
+        }
+    }
+    
+    public void showPatientTable(){
+        DefaultTableModel managePatientModel = (DefaultTableModel) patientTable.getModel();
+        managePatientModel.setRowCount(0);
+        
+        for (Patient patient : patientDirectory.getPatientList()) {
+            Object[] row = new Object[4];
+            row[0] = patient.getPerson().getPersonName();
+            row[1] = patient.getPatientID();
+            row[2] = patient.getPerson().getPersonAge();
+            row[3] = patient.getPerson().getPersonCommunity();
+            managePatientModel.addRow(row);
+        }
+    }
+    
+    public void showCityTable(){
+        DefaultTableModel manageCityModel = (DefaultTableModel) cityTable.getModel();
+        manageCityModel.setRowCount(0);
+        
+        for (City city : newSystem.getCityList()) {
+            Object[] row = new Object[1];
+            row[0] = city.getCityName();
+            manageCityModel.addRow(row);
+        }
+    }
+    
+    public void showCommunityTable(){
+        DefaultTableModel manageCommunityModel = (DefaultTableModel) communityTable.getModel();
+        manageCommunityModel.setRowCount(0);
+        
+        for (City city : newSystem.getCityList()){
+            for (Community community: city.getCommunityList()){
+                Object[] row = new Object[2];
+                row[0] = city.getCityName();
+                row[1] = community.getCommunityName();
+                manageCommunityModel.addRow(row);
+            }
+        }
+    }
+    
+    public void populatePatientTable(){
+        personADirModel = (DefaultTableModel) patientCreateTable.getModel();
+        personADirModel.setRowCount(0);
+        personVDirModel = (DefaultTableModel) patientViewTable.getModel();
+        personVDirModel.setRowCount(0);
+        personVDDirModel = (DefaultTableModel) patientViewDTable.getModel();
+        personVDDirModel.setRowCount(0);
+        
+        for(Patient p: patientDirectory.getPatientList()){
+            Object[] row = new Object[4];
+            row[0] = p.getPerson().getPersonName();
+            row[1] = p.getPatientID();
+            row[2] = p.getPerson().getPersonAge();
+            row[3] = p.getPerson().getPersonCommunity();
+            personADirModel.addRow(row);
+            personVDirModel.addRow(row);
+            personVDDirModel.addRow(row);
+        }
+    }
+    
+    public void showVitalsTable(){
+        encounterModel = (DefaultTableModel) encounterChangeTable.getModel();
+        encounterModel.setRowCount(0);
+        for(Encounter e: selectedPatient.getPatientEncounterHistory()){
+            Object[] row = new Object[6];
+            row[0] = selectedPatient.getPerson().getPersonName();
+            row[1] = selectedPatient.getPatientID();
+            row[2] = e.getEncounterID();
+            row[3] = e.getVitals().getBloodPressure();
+            row[4] = e.getVitals().getHeartRate();
+            row[5] = e.getVitals().getWeight();
+            encounterModel.addRow(row);
+        }
+    }
+    
+    public void populateHospitalTable(){
+        hospitalTableModel.setRowCount(0);
+        for(Community c: city.getCommunityList()){
+            if(selectedCommunity == c.getCommunityName()){
+                community = c;
+            }
+        }
+        for(Hospital h: community.getHospitalList()){
+            Object[] row = new Object[6];
+            row[0] = h.getHospitalNumber();
+            row[1] = h.getHospitalStreetName();
+            row[2] = h.getHospitalZIPCode();
+            row[3] = h.getHospitalCommunity();
+            row[4] = h.getHospitalCity();
+            row[5] = (h.getDoctorInHospital().size());
+            hospitalTableModel.addRow(row);
+        }
+    }
+    
+    public void populateManageTable(){
+        manageDoctorModel = (DefaultTableModel) manageDoctorTable.getModel();
+        managePersonModel = (DefaultTableModel) managePersonTable.getModel();
+        manageDoctorModel.setRowCount(0);
+        managePersonModel.setRowCount(0);
+        long[] doctorCountNumber = new long[doctorDirectory.getDoctorList().size()];
+        for(int i=0; i<(doctorDirectory.getDoctorList()).size(); i++){
+            doctorCountNumber[i] = doctorDirectory.getDoctorList().get(i).getPerson().getPersonCellPhoneNumber();
+        }
+        for (Person p : personDirectory.getPersonList()) {
+            boolean a = true;
+            for(long i : doctorCountNumber){
+                if(i == p.getPersonCellPhoneNumber()){
+                    a = false;
+                }
+            }
+            if(a == true){
+                Object[] row = new Object[4];
+                row[0] = p.getPersonName();
+                row[1] = p.getPersonDOB();
+                row[2] = p.getPersonCommunity();
+                row[3] = p.getPersonCellPhoneNumber();
+                managePersonModel.addRow(row);
+                a = true;
+            }
+        }
+        for(Doctor d: doctorDirectory.getDoctorList()){
+            Object[] row = new Object[5];
+            row[0] = d.getDoctorID();
+            row[1] = d.getPerson().getPersonName();
+            row[2] = d.getPerson().getPersonAge();
+            row[3] = d.getPerson().getPersonCommunity();
+            row[4] = d.getPerson().getPersonCellPhoneNumber();
+            manageDoctorModel.addRow(row);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
